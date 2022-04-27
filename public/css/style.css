@@ -1,7 +1,18 @@
+/* global section */
 * {
 	box-sizing: border-box;
 }
 
 body {
 	margin: 0;
+	background: #0B2434;
+}
+
+/* main section */
+
+.main {
+	margin: 4rem;
+	width: 90vw;
+	height: 90vh;
+	background: #F5F5F5;
 }
