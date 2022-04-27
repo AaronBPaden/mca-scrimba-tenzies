@@ -7,18 +7,25 @@ function App() {
 
   const rollDice = () => {
     setDice(prev => prev.map(die => die.held ? die
-      : {...die, num: Math.floor(Math.random() * 6)+1}
+      : {...die, num: Math.ceil(Math.random() * 6)}
     ));
   };
   // Always roll dice once to start.
   useEffect(rollDice, []);
 
-  console.log(dice);
+  const switchHeld = (id) => {
+    setDice(prev => prev.map(el => el.id === id ? {...el, held: !el.held} : el));
+  };
 
   return (
     <main className="main">
       <div className="die-container">
-        {dice.map((el) => <Die key={el.id} dieNum={el.num} held={el.held} />)}
+        {dice.map((el) => <Die
+          key={el.id}
+          dieNum={el.num}
+          held={el.held}
+          handleClick={() => switchHeld(el.id)}
+        />)}
       </div>
     </main>
   );
